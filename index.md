@@ -6,7 +6,7 @@
 
 * Source: [World Bank](https://data.worldbank.org) national accounts data
 
-[CSV](https://raw.githubusercontent.com/economics-databases/Gross-domestic-product/GDP_PCT_A.csv)
+     [CSV](https://github.com/economics-databases/Gross-domestic-product/blob/gh-pages/GDP_PCT_A.csv)
 
 ### 2. GDP (current US$) 
 
@@ -16,6 +16,8 @@
 
 * Source: [World Bank](https://data.worldbank.org) national accounts data
 
+     [CSV](https://github.com/economics-databases/Gross-domestic-product/blob/gh-pages/GDP_US_A.csv)
+
 ### 3. GDP per capita growth (annual %)
 
 * Annual percentage growth rate of GDP per capita based on constant local currency. Aggregates are based on constant 2010 U.S. dollars. GDP per capita is gross domestic product divided by midyear population. GDP at purchaser's prices is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources.
@@ -23,6 +25,9 @@
 * Periodicity: Annual
 
 * Source: [World Bank](https://data.worldbank.org) national accounts data
+
+     [CSV](https://github.com/economics-databases/Gross-domestic-product/blob/gh-pages/GDP_PCT_CAP_A.csv)
+
 
 ### 4. GDP per capita, PPP (current international $)
 
@@ -32,8 +37,13 @@
 
 * Source: [World Bank](https://data.worldbank.org) national accounts data
 
+     [CSV](https://github.com/economics-databases/Gross-domestic-product/blob/gh-pages/GDP_PPP_CAP_A.csv)
+
+
 
 ## R CODE
+
+*Installed Packages*
 
 ```{r}
 install.packages("wbstats")
@@ -44,6 +54,9 @@ library(WDI)
 new_wdi_cache <- WDIcache() 
 ```
 
+
+*GDP growth (annual %) DATABASE QUERY*
+
 ```{r}
 GDP_PCT_A<-WDI(indicator = c("NY.GDP.MKTP.KD.ZG"))
 names(GDP_PCT_A)[1] <- "ISO"
@@ -53,4 +66,36 @@ names(GDP_PCT_A)[4] <- "YEAR"
 write.csv(GDP_PCT_A,file="GDP_PCT_A.csv")
 ```
 
+*GDP per capita growth (annual %) DATABASE QUERY*
+
+```{r}
+GDP_US_A<-WDI(indicator = c("NY.GDP.MKTP.CD"))
+names(GDP_US_A)[1] <- "ISO"
+names(GDP_US_A)[2] <- "COUNTRY"
+names(GDP_US_A)[3] <- "VALUE"
+names(GDP_US_A)[4] <- "YEAR"
+write.csv(GDP_US_A,file="GDP_US_A.csv")
+```
+
+*GDP (current US$)  DATABASE QUERY*
+
+```{r}
+GDP_PCT_CAP_A<-WDI(indicator = c("NY.GDP.PCAP.KD.ZG"))
+names(GDP_PCT_CAP_A)[1] <- "ISO"
+names(GDP_PCT_CAP_A)[2] <- "COUNTRY"
+names(GDP_PCT_CAP_A)[3] <- "VALUE"
+names(GDP_PCT_CAP_A)[4] <- "YEAR"
+write.csv(GDP_PCT_CAP_A,file="GDP_PCT_CAP_A.csv")
+```
+
+*GDP per capita, PPP (current international $) DATABASE QUERY*
+
+```{r}
+GDP_PPP_CAP_A<-WDI(indicator = c("NY.GDP.PCAP.PP.CD"))
+names(GDP_PPP_CAP_A)[1] <- "ISO"
+names(GDP_PPP_CAP_A)[2] <- "COUNTRY"
+names(GDP_PPP_CAP_A)[3] <- "VALUE"
+names(GDP_PPP_CAP_A)[4] <- "YEAR"
+write.csv(GDP_PPP_CAP_A,file="GDP_PPP_CAP_A.csv")
+```
 
