@@ -6,7 +6,7 @@
 
 * Source: [World Bank](https://data.worldbank.org) national accounts data
 
-[CSV](https://raw.githubusercontent.com/economics-databases/Gross-domestic-product/gh-pages/GDP_PCT_A.csv)
+[CSV](https://raw.githubusercontent.com/economics-databases/Gross-domestic-product/GDP_PCT_A.csv)
 
 ### 2. GDP (current US$) 
 
