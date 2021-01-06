@@ -99,3 +99,13 @@ names(GDP_PPP_CAP_A)[4] <- "YEAR"
 write.csv(GDP_PPP_CAP_A,file="GDP_PPP_CAP_A.csv")
 ```
 
+*In order to have a time series for one country only, the following R code allows you to select a sub-section of the main table*
+
+- *zzz* represents the ISO code of the country for which you want to have a unique table
+
+```{r}
+country_dataset <- GDP_PCT_A[ which(GDP_PCT_A$ISO=='zzz'),]
+country_dataset <- GDP_US_A[ which(GDP_US_A$ISO=='zzz'),]
+country_dataset <- GDP_PCT_A[ which(GDP_PCT_CAP_A$ISO=='zzz'),]
+country_dataset <- GDP_PCT_A[ which(GDP_PPP_CAP_A$ISO=='zzz'),]
+```
